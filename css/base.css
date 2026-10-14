@@ -1,0 +1,73 @@
+/* Page shell + control panel. Brand styles live in teepublic.css / redbubble.css,
+   scoped by the data-brand attribute on <html>. */
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: #fff;
+  color: #1b1b2f;
+  font-family: Inter, system-ui, sans-serif;
+}
+
+button { font: inherit; cursor: pointer; }
+img { display: block; }
+
+.panel {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 24px;
+  background: #16161d;
+  color: #fff;
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 14px;
+}
+
+.panel-label {
+  opacity: 0.6;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.switch {
+  display: inline-flex;
+  padding: 3px;
+  background: #2a2a35;
+  border-radius: 999px;
+}
+
+.switch button {
+  border: 0;
+  padding: 7px 16px;
+  border-radius: 999px;
+  background: transparent;
+  color: #c9c9d4;
+  font-weight: 600;
+}
+
+.switch button[aria-pressed="true"] { background: #fff; color: #16161d; }
+
+.stage {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 16px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 320px));
+  justify-content: center;
+  gap: 32px 24px;
+  align-items: start;
+}
+
+@media (max-width: 560px) {
+  .panel { padding: 10px 16px; }
+  .grid { gap: 24px 12px; }
+}

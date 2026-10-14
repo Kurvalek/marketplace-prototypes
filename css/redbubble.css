@@ -1,0 +1,255 @@
+/* Redbubble tile: left-aligned text, "From" price, inline favorite. */
+
+.rb-tile {
+  --rb-ink: #1f1d40;
+  --rb-muted: #8b8a99;
+  --rb-verified: #2f6be6;
+  color: var(--rb-ink);
+  font-family: Inter, system-ui, sans-serif;
+}
+
+.rb-media {
+  position: relative;
+  aspect-ratio: 0.91;
+  background: #f8f8f8;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.rb-media img { width: 100%; height: 100%; object-fit: cover; }
+
+.rb-sizes {
+  position: absolute;
+  left: 8px;
+  right: 8px;
+  bottom: 8px;
+  padding: 8px 12px 14px;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 4px 18px rgba(31, 29, 64, 0.16);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition: opacity 0.16s, transform 0.16s, visibility 0s 0.16s;
+}
+
+.rb-tile[data-sizes-open] .rb-sizes {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  transition: opacity 0.16s, transform 0.16s;
+}
+
+.rb-sizes-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.rb-sizes-close {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  margin-right: -6px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--rb-ink);
+}
+
+.rb-sizes-close svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+}
+
+.rb-size-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.rb-size-grid button {
+  min-width: 52px;
+  height: 36px;
+  padding: 0 12px;
+  border: 1.5px solid #d4d3dc;
+  border-radius: 999px;
+  background: #fff;
+  color: var(--rb-ink);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.rb-size-grid button:hover:not(:disabled) { border-color: var(--rb-ink); }
+
+.rb-size-grid button:disabled {
+  border-color: #ececf0;
+  background: #f6f6f8;
+  color: #b4b3bf;
+  text-decoration: line-through;
+  cursor: not-allowed;
+}
+
+@media (max-width: 560px) {
+  .rb-sizes { left: 6px; right: 6px; bottom: 6px; padding: 4px 8px 10px; }
+  .rb-sizes-head { margin-bottom: 4px; font-size: 13px; }
+  .rb-size-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; }
+  .rb-size-grid button { min-width: 0; height: 32px; padding: 0; font-size: 12px; }
+}
+
+.rb-body {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.rb-text { flex: 1; min-width: 0; }
+
+.rb-title {
+  margin: 0;
+  overflow: hidden;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.45;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.rb-artist {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin: 2px 0 0;
+  font-size: 15px;
+  line-height: 1.45;
+}
+
+.rb-verified svg { width: 17px; height: 17px; vertical-align: -3px; }
+.rb-verified .seal { fill: var(--rb-verified); }
+.rb-verified .tick { fill: none; stroke: #fff; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+
+.rb-fav {
+  flex: none;
+  padding: 2px;
+  border: 0;
+  background: none;
+  color: var(--rb-muted);
+}
+
+.rb-fav svg {
+  width: 30px;
+  height: 30px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linejoin: round;
+}
+
+.rb-fav.is-on { color: #e4002b; }
+.rb-fav.is-on svg { fill: currentColor; }
+
+.rb-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 40px;
+  margin-top: 14px;
+}
+
+.rb-price { margin: 0; font-size: 18px; font-weight: 700; }
+
+.rb-qty { flex: none; }
+
+.rb-cart {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: 40px;
+  padding: 0 16px 0 14px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--rb-ink);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.rb-cart svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.rb-cart:hover { background: #16142e; }
+
+.rb-stepper {
+  display: none;
+  align-items: center;
+  height: 40px;
+  border: 1.5px solid var(--rb-ink);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--rb-ink);
+}
+
+.rb-stepper button {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 38px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+}
+
+.rb-stepper button:hover { color: #000; }
+
+.rb-stepper svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+}
+
+.rb-stepper [data-qty-label] {
+  min-width: 1.5em;
+  padding: 0 4px;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.rb-qty[data-qty]:not([data-qty="0"]) .rb-cart { display: none; }
+.rb-qty[data-qty]:not([data-qty="0"]) .rb-stepper { display: inline-flex; }
+
+.rb-deal {
+  display: none;
+  margin: 8px 0 0;
+  color: var(--rb-ink);
+  font-size: 13px;
+  line-height: 1.4;
+  text-align: right;
+}
+
+.rb-deal strong { font-weight: 700; }
+
+.rb-tile[data-deal] .rb-deal { display: block; }
